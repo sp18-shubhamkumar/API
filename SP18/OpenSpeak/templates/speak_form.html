@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Starting APP
+{% endblock %}
+
+{% block content %}
+
+    <h1 class ="text-center mt-4">Welcome to OpenSpeak App</h1>
+    <h2>
+        {%if form.instance.pk %} 
+        Edit Speak 
+        {% else %} 
+        Create Speak 
+        {%endif%} 
+        <form method="post" enctype="multipart/form-data"
+        class="form">
+        {%csrf_token%}
+        {{ form.as_p}}
+        <button class="btn btn-warning" type="submit">Submit</button>
+        </form>
+        <a href="{%url 'Speak_list'%}">Back to Speak List</a>
+     </h2>
+
+{% endblock  %}

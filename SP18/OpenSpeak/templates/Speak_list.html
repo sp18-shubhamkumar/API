@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Starting APP
+{% endblock %}
+
+{% block content %}
+
+    <h1 class ="text-center mt-4">Welcome to OpenSpeak App</h1>
+
+    <a class="btn btn-primary" href="{% url 'speak_create' %}">Create a Speak</a>
+    <div class="container row gap-3">
+        {% for speak in speaks %}
+        <div class="card" style="width: 18rem;">
+            {% if speak.photo %}
+            <img src="{{ speak.photo.url }}" class="card-img-top" alt="...">
+            {% endif %}
+            <div class="card-body">
+                <h5 class="card-title">{{speak.user.username}}</h5>
+                <p class="card-text">{{speak.text}}</p>
+                {% if speak.user == user %}
+                <a href="{%url 'speak_edit' speak.id%}" class="btn btn-primary">Edit</a>
+                <a href="{%url 'speak_delete' speak.id%}" class="btn btn-danger ">Delete</a>
+                {% endif %}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+{% endblock  %}
