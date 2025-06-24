@@ -10,6 +10,8 @@ def index(request):
 
 def Speak_list(request):
     speaks=Speak.objects.all().order_by('-created_at')
+    for i in speaks:
+        print(i.text,i.id)
     return render(request,'Speak_list.html',{'speaks':speaks})
 @login_required
 def speak_create(request):

@@ -17,7 +17,7 @@ Starting APP
             {% endif %}
             <div class="card-body">
                 <h5 class="card-title">{{speak.user.username}}</h5>
-                <p class="card-text">{{speak.text}}</p>
+                <p class="card-text">{{ speak.text }}</p>
                 {% if speak.user == user %}
                 <a href="{%url 'speak_edit' speak.id%}" class="btn btn-primary">Edit</a>
                 <a href="{%url 'speak_delete' speak.id%}" class="btn btn-danger ">Delete</a>
